@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Crear Nueva Persona</title>
+</h:head>
+<h:body>
+
+    <!-- <h:outputScript name="jsf.js" library="javax.faces" target="head"/> -->
+
+    <h1>Crear Nueva Persona</h1>
+    <hr/>
+
+    <h:form id="form" prependId="false">
+        
+        <table border="0">
+             
+            <tr>
+                <td>
+                    <h:outputLabel value="cc : "/>
+                </td>
+                <td>
+                    <h:inputText id="cc" value="#{myPersonaController.persona.cc}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h:outputLabel value="Nombre :"/>
+                </td>
+                <td>
+                    <h:inputText id="nombre" value="#{myPersonaController.persona.nombre}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h:outputLabel value="Apellido : "/>
+                </td>
+                <td>
+                    <h:inputText id="apellido" value="#{myPersonaController.persona.apellido}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h:outputLabel value="Genero : "/>
+                </td>
+                <td>
+                    <h:inputTextarea id="genero" value="#{myPersonaController.persona}">
+                </td>
+            </tr>
+
+        </table>
+        
+        <h:commandButton action="#{myPersonaController.doCreatePersona}" value="Crear una Persona" />
+        
+    </h:form>
+
+    <hr/>
+    <h1>Lista de personas</h1>
+    <hr/>
+    <h:dataTable id="personalist" value="#{myPersonaController.personaList}" var="pa" border="1">
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="cc"/>
+            </f:facet>
+            <h:outputText value="#{pa.cc}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Nombre"/>
+            </f:facet>
+            <h:outputText value="#{pa.nombre}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Apellido"/>
+            </f:facet>
+            <h:outputText value="#{pa.apellido}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Genero"/>
+            </f:facet>
+            <h:outputText value="#{pa.genero}"/>
+        </h:column>
+
+    </h:dataTable>
+    <h:form>
+      <h:commandButton action="#{myPersonaController.regresar}" value="Regresar" />
+    </h:form>
+</h:body>
+</html>
